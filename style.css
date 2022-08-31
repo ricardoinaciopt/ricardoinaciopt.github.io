@@ -1,0 +1,230 @@
+@font-face {
+  font-family: "Anonymous Pro";
+  src: url(assets/fonts/AnonymousPro.ttf);
+}
+
+@font-face {
+  font-family: "FogtwoNo5";
+  src: url(assets/fonts/FogtwoNo5.ttf);
+}
+
+* {
+  cursor: none;
+}
+
+:root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  font-family: "Anonymous Pro", Helvetica, sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  cursor: none;
+  scroll-behavior: smooth;
+  color: #0d0d0d;
+}
+
+#logo {
+  position: fixed;
+  width: 500px;
+  bottom: -20px;
+  right: -15px;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+#content {
+  padding: 5%;
+}
+
+.glass {
+  margin: 0 auto;
+  width: 100%;
+  backdrop-filter: blur(2rem);
+}
+
+#navbar {
+  position: sticky;
+  top: 3%;
+  width: 300px;
+  height: 50px;
+  border-radius: 5px;
+  z-index: 100;
+}
+
+/* Navbar links */
+#navbar a {
+  float: left;
+  display: block;
+  text-align: center;
+  width: 100px;
+  mix-blend-mode: exclusion;
+  line-height: 50px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+#navbar a:hover {
+  opacity: 0.3;
+}
+
+p {
+  text-align: justify;
+  text-justify: newspaper;
+}
+
+img {
+  max-width: 70vw;
+  pointer-events: none;
+}
+
+#home {
+  font-size: 8vw;
+  margin-top: 0;
+  margin-bottom: 100px;
+}
+
+.center-quote {
+  width: 100%;
+  height: 250px;
+  border-radius: 5px;
+  border: 1px solid #ffffff;
+  font-size: 4.5em;
+  font-family: "FogtwoNo5", "Times New Roman", Times, serif;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  flex-direction: column;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  padding: 0;
+  transition: 1s;
+}
+
+.left-quote {
+  width: 90%;
+  height: 400px;
+  border-radius: 15px;
+  border: 1px solid #ffffff;
+  font-size: 4.5em;
+  font-family: "FogtwoNo5", "Times New Roman", Times, serif;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  flex-direction: column;
+  margin-bottom: 80px;
+  padding: 0;
+  transition: 1s;
+}
+
+
+.right-quote {
+  width: 90%;
+  height: 400px;
+  border-radius: 15px;
+  border: 1px solid #ffffff;
+  font-size: 4.5em;
+  font-family: "FogtwoNo5", "Times New Roman", Times, serif;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  flex-direction: column;
+  margin-top: 100px;
+  right: 10px;
+  padding: 0;
+
+}
+
+.left-quote:hover,
+.right-quote:hover,
+.center-quote:hover {
+  filter: blur(5px);
+}
+
+.article-box {
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.article-left {
+  padding: 2%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.article-right {
+  padding: 2%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#posts {
+  width: 80vw;
+  min-height: 3000px;
+  margin: 0 auto;
+  margin-top: 200px;
+  border-radius: 8px;
+  border: 1px solid #ffffff;
+}
+
+.sticky-right {
+  border-radius: 5px;
+  position: sticky;
+  width: 95%;
+  top: 100px;
+}
+
+.sticky-left {
+  border-radius: 5px;
+  position: sticky;
+  width: 95%;
+  filter: invert(100%);
+  top: 100px;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #ffffff;
+    background: #0d0d0d;
+  }
+
+  #navbar a {
+    color: #ffffff;
+  }
+
+  #logo {
+    filter: invert(100%);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    color: #0d0d0d;
+    background: #ffffff;
+  }
+
+  #navbar a {
+    color: #0d0d0d;
+  }
+
+  .left-quote,
+  .right-quote,
+  .center-quote {
+    border: 1px solid #0d0d0d;
+    color: #0d0d0d;
+  }
+}

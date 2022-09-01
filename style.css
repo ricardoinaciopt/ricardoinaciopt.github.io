@@ -198,7 +198,6 @@ img {
   margin-top: 200px;
   border-radius: 5px;
   padding: 5%;
-  border: 1px solid #ffffff;
 }
 
 
@@ -242,6 +241,15 @@ footer {
     margin-top: 1vh;
   }
 
+  #posts>p {
+    text-align-last: left;
+    font-size: 1em;
+    text-align: justify;
+    text-justify: distribute;
+    text-indent: 2em;
+
+  }
+
   #posts li {
     font-size: 0.6em;
   }
@@ -265,8 +273,6 @@ footer {
     font-size: x-large;
     justify-content: space-around;
   }
-
-  sub {}
 
   #navbar {
     width: 80vw;
@@ -303,6 +309,10 @@ footer {
     border: 1px solid #ffffff;
   }
 
+  #posts {
+    border: 1px solid #ffffff;
+  }
+
   #logo {
     filter: invert(100%);
   }
@@ -326,6 +336,10 @@ footer {
 
   .article-box a {
     border-radius: 5px;
+    border: 1px solid #0d0d0d;
+  }
+
+  #posts {
     border: 1px solid #0d0d0d;
   }
 

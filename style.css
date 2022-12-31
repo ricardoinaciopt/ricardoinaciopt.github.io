@@ -127,7 +127,7 @@ img {
   text-align: center;
   flex-direction: column;
   margin-bottom: 100px;
-  padding: 0;
+  padding: 5%;
   transition: 1s;
 }
 
@@ -222,6 +222,7 @@ footer {
   display: flex;
   align-items: center;
   text-align: center;
+  flex-direction: column;
   justify-content: center;
   line-height: 30px;
   font-size: 0.8em;

@@ -24,6 +24,10 @@
   overflow-x: hidden;
 }
 
+:root[data-page="about"] {
+  overflow: hidden;
+}
+
 #logo {
   position: fixed;
   width: 500px;
@@ -50,12 +54,14 @@ blockquote {
 }
 
 #navbar {
+  display: flex;
+  justify-content: space-around;
   position: sticky;
   top: 3%;
-  width: 400px;
+  width: 35vmax;
   height: 50px;
   border-radius: 5px;
-  z-index: 100;
+  z-index: 100000;
 }
 
 a {
@@ -112,6 +118,21 @@ img {
   margin-bottom: 100px;
   padding: 0;
   transition: 1s;
+}
+
+.center-quote-fix {
+  width: 100vmax;
+  height: 45vmin;
+  font-size: 9em;
+  font-family: "FogtwoNo5", "Times New Roman", Times, serif;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 0;
+
 }
 
 .left-quote {
@@ -227,6 +248,29 @@ footer {
   font-size: 0.8em;
   opacity: 0.2;
 }
+
+/*about*/
+#about-body {
+  overflow: hidden;
+  width: 100%;
+  padding: 0px;
+}
+
+.image {
+  width: 40vmin;
+  position: absolute;
+  transition: opacity 0.1s linear;
+  transform: translate(-50%, -50%);
+}
+
+.image[data-status="inactive"] {
+  opacity: 0;
+}
+
+.image[data-status="active"] {
+  opacity: 1;
+}
+
 
 @media only screen and (max-width: 600px) {
 

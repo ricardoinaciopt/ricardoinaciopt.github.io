@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 //about
 const images = document.getElementsByClassName("image");
 
@@ -35,7 +34,5 @@ const handleOnMove = (e) => {
 window.onmousemove = (e) => handleOnMove(e);
 
 window.ontouchmove = (e) => handleOnMove(e.touches[0]);
-=======
 const ano = new Date().getFullYear();
 document.getElementById("ano").textContent = ano;
->>>>>>> 526416a391a81057ca1af4a7b31da7867ab1fe66

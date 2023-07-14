@@ -27,6 +27,7 @@
 :root[data-page="about"] {
   overflow: hidden;
 
+
 }
 
 #logo {
@@ -122,7 +123,7 @@ img {
 }
 
 .center-quote-fix {
-  width: 90vmin;
+  width: 100vmin;
   height: 45vmin;
   font-size: 20vmin;
   font-family: "FogtwoNo5", "Times New Roman", Times, serif;
@@ -132,6 +133,7 @@ img {
   text-align: center;
   flex-direction: column;
   margin: 0 auto;
+  position: relative;
   padding: 0;
   z-index: 10000;
 
@@ -250,8 +252,17 @@ footer {
   line-height: 30px;
   font-size: 0.8em;
   opacity: 0.2;
+  position: fixed;
+  bottom: 3%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
+/*about*/
+#about-body {
+  overflow: hidden;
+  width: 100%;
+}
 
 .image {
   width: 40vmin;

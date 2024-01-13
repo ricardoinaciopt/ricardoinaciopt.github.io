@@ -41,7 +41,7 @@ if (document.getElementById("ano"))
   document.getElementById("ano").textContent = ano;
 
 document.addEventListener("DOMContentLoaded", function () {
-  const smokeContainer = document.getElementById("content");
+  const content = document.getElementById("content");
 
   let x = 0;
   let y = 0;
@@ -51,11 +51,14 @@ document.addEventListener("DOMContentLoaded", function () {
     y = event.pageY;
 
     const smoke = document.createElement("div");
+    const point = document.createElement("div");
     smoke.className = "smoke";
+
     smoke.style.left = `${x}px`;
     smoke.style.top = `${y}px`;
 
-    smokeContainer.appendChild(smoke);
+    content.appendChild(smoke);
+    content.appendChild(point);
 
     smoke.addEventListener("animationend", function () {
       smoke.remove();

@@ -35,5 +35,40 @@ if (images.length != 0) {
   window.onmousemove = (e) => handleOnMove(e);
   window.ontouchmove = (e) => handleOnMove(e.touches[0]);
 }
+
 const ano = new Date().getFullYear();
 document.getElementById("ano").textContent = ano;
+
+document.addEventListener("DOMContentLoaded", function () {
+  const follower = document.getElementById("follower");
+  const inertia = 0.1;
+
+  let x = 0;
+  let y = 0;
+  window.addEventListener("mousemove", function (event) {
+    x = event.pageX;
+    y = event.pageY;
+  });
+
+  window.ontouchmove = (event) => {
+    if (event.touches.length === 1) {
+      x = event.touches[0].pageX;
+      y = event.touches[0].pageY;
+    }
+  };
+
+  function updateFollower() {
+    const currentX = parseFloat(follower.style.left || 0);
+    const currentY = parseFloat(follower.style.top || 0);
+
+    const dx = (x - currentX) * inertia;
+    const dy = (y - currentY) * inertia;
+
+    follower.style.left = currentX + dx + "px";
+    follower.style.top = currentY + dy + "px";
+
+    requestAnimationFrame(updateFollower);
+  }
+
+  updateFollower();
+});

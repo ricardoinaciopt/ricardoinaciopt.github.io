@@ -51,14 +51,12 @@ document.addEventListener("DOMContentLoaded", function () {
     y = event.pageY;
 
     const smoke = document.createElement("div");
-    const point = document.createElement("div");
     smoke.className = "smoke";
 
     smoke.style.left = `${x}px`;
     smoke.style.top = `${y}px`;
 
     content.appendChild(smoke);
-    content.appendChild(point);
 
     smoke.addEventListener("animationend", function () {
       smoke.remove();

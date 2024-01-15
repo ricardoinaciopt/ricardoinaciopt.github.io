@@ -8,6 +8,14 @@
     src: url(assets/fonts/FogtwoNo5.ttf);
   }
 
+  * {
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  body {
+    min-height: 100dvb;
+  }
 
   :root {
     width: 100%;
@@ -22,7 +30,7 @@
     scroll-behavior: smooth;
     color: #0d0d0d;
     overflow-x: hidden;
-    cursor: none;
+    cursor: url('./assets/images/cursor.png'), none;
   }
 
   :root[data-page="about"] {
@@ -48,6 +56,7 @@
     position: absolute;
     border-radius: 50%;
     filter: blur(10px);
+    transform: translateX(-50%);
     animation: smokeAnimation 3s linear;
   }
 
@@ -94,9 +103,10 @@
 
   a {
     text-decoration: none;
+    text-wrap: pretty;
     line-height: 50px;
     transition: 0.3s;
-    cursor: none;
+    cursor: url('./assets/images/cursor.png'), none;
     z-index: 10000;
   }
 
@@ -119,7 +129,7 @@
 
   p {
     text-align: justify;
-    text-justify: newspaper;
+    text-wrap: pretty;
   }
 
   img {
@@ -442,6 +452,7 @@
 
     .smoke {
       background-color: rgba(200, 200, 200, 0.8);
+      z-index: 9999;
     }
 
   }
@@ -451,10 +462,12 @@
     body {
       color: #0d0d0d;
       background: #ffffff;
+      cursor: url('./assets/images/cursor_inverse.png'), none;
     }
 
     a {
       color: #0d0d0d;
+      cursor: url('./assets/images/cursor_inverse.png'), none;
     }
 
     .article-box a {

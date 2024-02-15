@@ -63,3 +63,34 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+function getMostRecentPost() {
+  fetch("blog.html")
+    .then((response) => response.text())
+    .then((html) => {
+      const tempElement = document.createElement("div");
+      tempElement.innerHTML = html;
+
+      const postList = tempElement.querySelectorAll("#posts li");
+      let mostRecentDate = null;
+      let mostRecentPost = null;
+
+      postList.forEach((post) => {
+        postDate = post.lastChild.textContent;
+        if (mostRecentDate === null || postDate > mostRecentDate) {
+          mostRecentDate = postDate;
+          mostRecentPost = post;
+        }
+      });
+      tempElement.remove();
+      const linkElement = document.createElement("a");
+      linkElement.href = mostRecentPost.firstChild.pathname;
+      linkElement.textContent = mostRecentPost.firstChild.textContent;
+      document.querySelector("#last-post").appendChild(linkElement);
+    })
+    .catch((error) => {
+      console.error("Error fetching blog.html:", error);
+    });
+}
+if (document.querySelector("html").getAttribute("data-page") == "home") {
+  getMostRecentPost();
+}

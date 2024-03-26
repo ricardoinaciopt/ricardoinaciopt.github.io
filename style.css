@@ -50,6 +50,11 @@
     padding: 2%;
   }
 
+  a {
+    position: relative;
+    z-index: 10000;
+  }
+
   .smoke {
     width: 50px;
     height: 25px;
@@ -251,12 +256,34 @@
   }
 
   #posts {
-    width: 80vw;
+    width: 60vw;
     margin: 0 auto;
+    justify-content: center;
     font-size: x-large;
     margin-top: 50px;
     border-radius: 5px;
     padding: 5%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-font-smoothing: antialiased !important;
+    text-rendering: optimizelegibility !important;
+    letter-spacing: .03em;
+  }
+
+  .postimage {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 50%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+
+  .formula {
+    font-family:
+      'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
+    border: 1px white;
+    font-size: x-large !important;
   }
 
   h5 {
@@ -412,12 +439,21 @@
 
   @media only screen and (max-width: 700px) {
     #posts {
-      width: 90vw;
+      width: 85vw;
       margin: 0 auto;
-      font-size: large;
+      font-size: medium;
       border: none !important;
       line-height: 1.5;
       padding: 0;
+    }
+
+    .postimage {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 100%;
+      padding-top: 5%;
+      padding-bottom: 5%;
     }
   }
 
@@ -439,6 +475,19 @@
 
     #posts {
       border: 1px solid #ffffff;
+    }
+
+    .postimage {
+      filter: invert(1);
+    }
+
+
+    code {
+      font-style: italic;
+      padding: .05em;
+      border-radius: .3em;
+      border: 1px solid #ffffff82;
+      white-space: nowrap;
     }
 
     #logo {
@@ -474,6 +523,14 @@
     .article-box a {
       border-radius: 5px;
       border: 1px solid #0d0d0d;
+    }
+
+
+    code {
+      font-style: italic;
+      padding: .06em;
+      border-radius: .3em;
+      border: 1px solid #00000082;
     }
 
     #posts {

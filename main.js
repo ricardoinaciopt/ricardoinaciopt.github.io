@@ -75,7 +75,7 @@ function getMostRecentPost() {
       let mostRecentPost = null;
 
       postList.forEach((post) => {
-        postDate = post.lastChild.textContent;
+        postDate = post.children[1].textContent;
         if (mostRecentDate === null || postDate > mostRecentDate) {
           mostRecentDate = postDate;
           mostRecentPost = post;

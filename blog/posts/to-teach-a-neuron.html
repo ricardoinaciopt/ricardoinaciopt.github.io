@@ -64,11 +64,6 @@
           xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
           <semantics>
             <mrow>
-              <mi>σ</mi>
-              <mo form="prefix" stretchy="false">(</mo>
-              <mi>x</mi>
-              <mo form="postfix" stretchy="false">)</mo>
-              <mo>=</mo>
               <mfrac>
                 <mn>1</mn>
                 <mrow>
@@ -84,17 +79,12 @@
                 </mrow>
               </mfrac>
             </mrow>
-            <annotation encoding="application/x-tex">\sigma(x) = \frac{1}{1 + e^{-x}}</annotation>
+            <annotation encoding="application/x-tex">\frac{1}{1 + e^{-x}}</annotation>
           </semantics>
         </math>), the Hyperbolic Tangent (<math class="formula" xmlns="http://www.w3.org/1998/Math/MathML"
           display="inline">
           <semantics>
             <mrow>
-              <mtext>tanh</mtext>
-              <mo form="prefix" stretchy="false">(</mo>
-              <mi>x</mi>
-              <mo form="postfix" stretchy="false">)</mo>
-              <mo>=</mo>
               <mfrac>
                 <mrow>
                   <msup>
@@ -126,17 +116,12 @@
                 </mrow>
               </mfrac>
             </mrow>
-            <annotation encoding="application/x-tex"> \text{tanh}(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}</annotation>
+            <annotation encoding="application/x-tex">\frac{e^x - e^{-x}}{e^x + e^{-x}}</annotation>
           </semantics>
         </math>), or the Rectified Linear Unit (<math class="formula" xmlns="http://www.w3.org/1998/Math/MathML"
           display="inline">
           <semantics>
             <mrow>
-              <mtext>ReLU</mtext>
-              <mo form="prefix" stretchy="false">(</mo>
-              <mi>x</mi>
-              <mo form="postfix" stretchy="false">)</mo>
-              <mo>=</mo>
               <mrow>
                 <mi>max</mi>
                 <mo>⁡</mo>
@@ -147,9 +132,9 @@
               <mi>x</mi>
               <mo form="postfix" stretchy="false">)</mo>
             </mrow>
-            <annotation encoding="application/x-tex">\text{ReLU}(x) = \max(0, x) </annotation>
+            <annotation encoding="application/x-tex">\max(0, x) </annotation>
           </semantics>
-        </math>)
+        </math>).
 
       </p>
 
@@ -469,100 +454,70 @@
         value called the learning rate (<code>α</code>). This small number is what we call a hyperparameter, which
         influences how rapidly
         the
-        network adapts.
-        <math class="formula" xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        network adapts. To update each, respectively, we use:
+        <math class="formula" xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
           <semantics>
-            <mtable displaystyle="true" columnalign="right left">
-              <mtr>
-                <mtd>
-                  <mrow>
-                    <mtext>weight update:</mtext>
-                    <mspace></mspace>
-                  </mrow>
-                </mtd>
-                <mtd>
-                  <mrow>
-                    <msub>
-                      <mi>W</mi>
-                      <mrow>
-                        <mi>i</mi>
-                        <mi>j</mi>
-                      </mrow>
-                    </msub>
-                    <mo>=</mo>
-                    <msub>
-                      <mi>W</mi>
-                      <mrow>
-                        <mi>i</mi>
-                        <mi>j</mi>
-                      </mrow>
-                    </msub>
-                    <mo>−</mo>
-                    <mi>α</mi>
-                    <mfrac>
-                      <mrow>
-                        <mi>∂</mi>
-                        <mi>C</mi>
-                      </mrow>
-                      <mrow>
-                        <mi>∂</mi>
-                        <msub>
-                          <mi>W</mi>
-                          <mrow>
-                            <mi>i</mi>
-                            <mi>j</mi>
-                          </mrow>
-                        </msub>
-                      </mrow>
-                    </mfrac>
-                  </mrow>
-                </mtd>
-              </mtr>
-              <mtr>
-                <mtd>
-                  <mrow>
-                    <mtext>bias update:</mtext>
-                    <mspace></mspace>
-                  </mrow>
-                </mtd>
-                <mtd>
-                  <mrow>
-                    <msub>
-                      <mi>b</mi>
-                      <mi>i</mi>
-                    </msub>
-                    <mo>=</mo>
-                    <msub>
-                      <mi>b</mi>
-                      <mi>i</mi>
-                    </msub>
-                    <mo>−</mo>
-                    <mi>α</mi>
-                    <mfrac>
-                      <mrow>
-                        <mi>∂</mi>
-                        <mi>C</mi>
-                      </mrow>
-                      <mrow>
-                        <mi>∂</mi>
-                        <msub>
-                          <mi>b</mi>
-                          <mi>i</mi>
-                        </msub>
-                      </mrow>
-                    </mfrac>
-                  </mrow>
-                </mtd>
-              </mtr>
-            </mtable>
-            <annotation encoding="application/x-tex">\begin{align*}
-              \text{Weight Update:} \quad &amp; W_{ij} = W_{ij} - \alpha \frac{\partial C}{\partial W_{ij}} \\
-              \text{Bias Update:} \quad &amp; b_i = b_i - \alpha \frac{\partial C}{\partial b_i}
-              \end{align*}
-            </annotation>
+            <mrow>
+              <msub>
+                <mi>W</mi>
+                <mi>j</mi>
+              </msub>
+              <mo>=</mo>
+              <msub>
+                <mi>W</mi>
+                <mi>j</mi>
+              </msub>
+              <mo>−</mo>
+              <mi>α</mi>
+              <mfrac>
+                <mrow>
+                  <mi>∂</mi>
+                  <mi>C</mi>
+                </mrow>
+                <mrow>
+                  <mi>∂</mi>
+                  <msub>
+                    <mi>W</mi>
+                    <mi>j</mi>
+                  </msub>
+                </mrow>
+              </mfrac>
+            </mrow>
+            <annotation encoding="application/x-tex">W_j = W_j - \alpha \frac{\partial C}{\partial W_j} </annotation>
           </semantics>
         </math>
-
+        and
+        <math class="formula" xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+          <semantics>
+            <mrow>
+              <msub>
+                <mi>b</mi>
+                <mi>j</mi>
+              </msub>
+              <mo>=</mo>
+              <msub>
+                <mi>b</mi>
+                <mi>j</mi>
+              </msub>
+              <mo>−</mo>
+              <mi>α</mi>
+              <mfrac>
+                <mrow>
+                  <mi>∂</mi>
+                  <mi>C</mi>
+                </mrow>
+                <mrow>
+                  <mi>∂</mi>
+                  <msub>
+                    <mi>b</mi>
+                    <mi>j</mi>
+                  </msub>
+                </mrow>
+              </mfrac>
+            </mrow>
+            <annotation encoding="application/x-tex">b_j = b_j - \alpha \frac{\partial C}{\partial b_j}</annotation>
+          </semantics>
+        </math>
       </p>
 
 

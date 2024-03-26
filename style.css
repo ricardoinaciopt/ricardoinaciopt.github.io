@@ -282,8 +282,8 @@
   .formula {
     font-family:
       'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
-    border: 1px white;
     font-size: x-large !important;
+    text-align: center;
   }
 
   h5 {
@@ -439,7 +439,7 @@
 
   @media only screen and (max-width: 700px) {
     #posts {
-      width: 85vw;
+      width: 80vw;
       margin: 0 auto;
       font-size: medium;
       border: none !important;
@@ -451,9 +451,13 @@
       position: relative;
       left: 50%;
       transform: translateX(-50%);
-      max-width: 100%;
+      max-width: 80%;
       padding-top: 5%;
       padding-bottom: 5%;
+    }
+
+    .formula {
+      font-size: larger !important;
     }
   }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-page="blog-post">
 
 <head>
   <meta charset="UTF-8" />
@@ -30,10 +30,11 @@
         can be
         simplified and thought of as if they were functions, receiving our contributions as input, being weighed by how
         much of
-        an impact they have, and producing the outcomes as output. Actually, most of the things we can think of, can be
-        represented as functions. That's why having a model that could possibly represent (or at least approximate)
-        them, would
-        be invaluable to solving the very challenging problems we face on a regular basis.
+        an impact they have, and producing the outcomes as output. Actually, the spectrum of things we can think of as
+        functions is almost unlimited. That's why having a model that has the possibility of representing (or at least
+        approximating)
+        them would
+        be invaluable to solving the challenging problems we face on a regular basis.
       </p>
 
       <img class="postimage" src="../post_files/as_function.png" alt="actions as functions">
@@ -42,26 +43,29 @@
         That is where neural networks enter the picture, since that's exactly what they do! If you can design a NN that
         is
         sufficiently complex, any desired function could be hypothetically mathematically approximated. To understand
-        how they
-        actually work, let's put the complexity aside and focus on a smaller scale, the unit: the neuron.
+        how these mechanisms
+        actually work, let's push the complexity back a bit and focus on a smaller scale, the unit: the neuron.
       </p>
 
       <img class="postimage" src="../post_files/neuron.png" alt="the neuron">
 
       <p>
-        These simply take an in input <code>x</code>, which gets weighted by the connection's strength,
+        These simply take an input <code>x</code>, which gets weighted by the connection's strength,
         <code>w⋅x</code>,
         and a
-        bias (<code>b</code>) is added to help represent slightly more complex problems (e.g., when the desired function
+        bias (<code>b</code>) is added to help represent slightly more complex issues (e.g., when the desired function
         does not cross
         the
-        origin). Lastly, this weighted and likely biased input, <code>z = wx+b</code> passes through an activation
+        origin), adding a bit of flexibility to the network, so that it can learn better. Lastly,
+        this weighted and likely biased input, <code>z = wx+b</code> passes through an activation
         function, where, given
         that the value is
-        higher than a certain threshold, <code>a(z) > threshold,</code> the result is sent to the next (or
-        final)
-        layer. Possible and common functions are the Sigmoid (<math class="formula"
-          xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+        higher than a certain threshold, <code>a(z) > threshold,</code> the result can be sent forward, as it's
+        considered relevant. Real networks are made by multiple layers of these neurons, each with multiple neurons.
+        Every one receives as input the outputs from all neurons from the previous layers, again weighted by their
+        connections. To keep complexity low, let´s image we only have one neuron per layer in our NN. Possible and
+        common activation functions (that decide if values should keep propagating forward) are the Sigmoid (<math
+          class="formula" xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
           <semantics>
             <mrow>
               <mfrac>
@@ -138,17 +142,16 @@
 
       </p>
 
-      <p>These networks are made by (in some cases, hundreds of thousands or even millions of) them, but as it's
-        observable, they all simply execute this basic procedure: take one
-        or more inputs, and produce an output. This way, in order to approximate any desired function, we can only
+      <p>Every single neuron that contributes to these complex systems, simply executes this basic procedure: take the
+        input and produce an output. This way, in order to approximate any desired function, we can only
         change two
         values: the weights and biases. Initially, no network will be able to figure out what these two variables are
         supposed
-        to look like, so we need to start them off with arbitrary values, and change them iteratively until they are
+        to look like, so we need to start them off with arbitrary values and change them iteratively until they are
         close
         enough to the “real” ones. That is what is meant by learning a function: finding the sweet spot of the weights
         and
-        biases. To reach that spot, we need to test them, and see how close or far from reality they actually are (maybe
+        biases. To reach that spot, we need to test them and see how close or far from reality they actually are (maybe
         a
         metric would help to evaluate the situation). Let's use the Mean Squared Error (it's simple enough to be easily
         understood):
@@ -199,18 +202,19 @@
         is the actual value the function we are trying to approximate would output (for every single example). Now that
         we have a metric to measure
         how far
-        we still are, we can use it to define the <code>Cost</code> function. This function, uses the chosen error
+        we still are, we can use it to define the <code>Cost</code> function. This function uses the chosen error
         metric, and by
         looking at
-        it in respect to different parameters (as you may have guessed it already, the <code>weight</code> and the
+        it with respect to different parameters (as you may have guessed it already, the <code>weight</code> and the
         <code>bias</code>) tries to
         find
-        the values that minimize the error (or cost). In this instance, the squared difference between the value of our
+        the values that minimize the error (or cost), indicating a closer approximation to the "real" function. In this
+        instance, the squared difference between the value of our
         function
         outputs,
         <code>ŷ</code>, and the real value <code>y</code> will be used.
 
-        To formalize this, we use <code>gradients</code>, which gives
+        To formalize this, we use <code>gradients</code>, which give
         us a <code>vector</code>
         representative of
         how much the cost function changes with respect to a specific parameter (in other words, how sensitive it is to
@@ -253,7 +257,7 @@
       <p>
         The question now is, how do we get these gradients? We have come a long way (in terms of steps) since we
         introduced the
-        function variable parameters <code>w</code> and <code>b</code>, until we reached the final outcome of the
+        function's variable parameters <code>w</code> and <code>b</code>, until we reached the final outcome of the
         prediction <code>ŷ</code>. So, to
         compute this vector, we
         will use the
@@ -265,9 +269,11 @@
       <p>
         There are a lot of different (and probably better) ways to explain it, but think of it as a chain of connections
         between
-        directly adjacent values in the calculation of our approximated function's output. Let's recall the steps: We
+        directly adjacent values in the calculation of our approximated function's output, where in each step we
+        consider how each component affects the final outcome. In other words, a chain of specific parameters
+        influences, at each needed step for the final outcome. Let's recall the steps: We
         take an
-        input <code>x</code>, we multiply it by the connection's weight,
+        input <code>x</code>, multiply it by the connection's weight,
         <code>w</code>, and add the bias, <code>b</code>: <code>wx+b</code>. To keep it simple,
         let's call
         this weighted (and potentially biased) input <code>z</code>. Then, we take this value and pass it through the
@@ -307,13 +313,14 @@
         wx+b</code>, to obtain the sought-after parameters (<code>w</code> and <code>b</code>). To get to
         <code>w</code>, we use the chain rule, starting from
         the
-        <code>Cost</code>, and going to the prediction (the neuron's activation function output, <code>ŷ = a(z)</code>).
+        <code>Cost</code>, and going to the prediction (the last neuron's activation function output,
+        <code>ŷ = a(z)</code>).
         Then, from the
         predicted
         output <code>ŷ</code>, to the activation function's input, <code>z</code>. And then, finally, we reach the
-        desired variable <code>w</code>. In
+        desired variable <code>w</code>, from the direct computation of <code>z</code>. In
         each of
-        these chain steps, when I say, get from J to i, what I formally mean is to get the gradient of <code>J</code>
+        these chain steps, when I say get from J to i, what I formally mean is to get the derivative of <code>J</code>
         with respect
         to <code>i</code>,
         formally, <math class="formula" xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
@@ -442,14 +449,16 @@
       </p>
 
       <p>
-        Remember, this is only for a single neuron, so in a common network's environment, we need to aggregate the
+        Remember, this is only for a single neuron per layer, so in a common network's environment, we need to aggregate
+        the
         gradients of
         all neurons (available examples) in some way (e.g. averaging them).
       </p>
 
       <p>
         To make the neuron learn (at each step, slightly better) weight and bias values, we update them, considering the
-        gradient of our cost function, which will decide the size of the step to take. We should also pay attention to a
+        gradient of our cost function, which will decide the size and direction of the step to take. We should also pay
+        attention to a
         special
         value called the learning rate (<code>α</code>). This small number is what we call a hyperparameter, which
         influences how rapidly
@@ -522,11 +531,11 @@
 
 
 
-      <p>All things considered, let's just say that normally we would take big steps in the beginning, and smaller steps
+      <p>All things considered, let's just say that normally we would take big steps in the beginning and smaller steps
         as we
         reach lower Cost (aka Loss) function values, optimizing the parameters of our network, through a method known as
         <code>Gradient Descent</code>.
-        I will most likely delve further into this particular subject on another post, so for the sake of brevity, let's
+        This particular subject could be the sole topic of another post, so for the sake of brevity, let's
         simplify (a gross amount) this matter.
       </p>
 
@@ -538,23 +547,26 @@
         simply indicating the direction of the step).
         Then, we must update the values of said parameters, considering the learning rate (<code>α</code>), and use them
         on the
-        next iterations, to be once again updated if needed.
+        next iterations to be once again updated if needed. The main idea is that by forcing a network to change these
+        values, we can directly tell it how to individually change the connections between neurons, and how much
+        each output should influence the outcome (reduce or increase).
       </p>
       <p>
         As it's observable in the example, as the <code>Cost</code> function is
-        minimized, its value's gradient also
-        becomes smaller and smaller (think of it as the inclination of the gradient of the loss), until it reaches the
-        point when the updates (steps) are not significant anymore.
+        minimized, the gradients also
+        become smaller (think of it as the inclination of the loss), until it reaches the
+        point when the updates (steps) are no longer significant.
         That is
         when we
         stop, since we've reach the optimal (local or global) parameter value! Since most real problems won't be
         represented by a simple convex function, the <code>global minima</code> can't be guaranteed, thus the need for
-        more complex algorithms to find the parameter values, such as <code>Stochastic Gradient Descent (SGD)</code> or
+        variations on this algorithm, to find the parameter values more effectively, such as
+        <code>Stochastic Gradient Descent (SGD)</code> or
         <code>Mini-Batch Gradient Descent</code>.
 
       </p>
       <p>
-        By doing this, paired with a careful desing and architecture of our network,
+        By doing this, paired with a careful design and architecture of our network,
         we can reach a point where the parameters we were seeking (weights and biases), allow us to very accurately
         deduce any
         parameterized function we intend to, and consequently, solve fairly complex problems.

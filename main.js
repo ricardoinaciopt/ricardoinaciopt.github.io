@@ -40,29 +40,32 @@ const ano = new Date().getFullYear();
 if (document.getElementById("ano"))
   document.getElementById("ano").textContent = ano;
 
-document.addEventListener("DOMContentLoaded", function () {
-  const content = document.getElementById("content");
+if (document.querySelector("html").getAttribute("data-page") !== "blog-post") {
+  document.addEventListener("DOMContentLoaded", function () {
+    const content = document.getElementById("content");
 
-  let x = 0;
-  let y = 0;
+    let x = 0;
+    let y = 0;
 
-  window.addEventListener("mousemove", function (event) {
-    x = event.pageX;
-    y = event.pageY;
+    window.addEventListener("mousemove", function (event) {
+      x = event.pageX;
+      y = event.pageY;
 
-    const smoke = document.createElement("div");
-    smoke.className = "smoke";
+      const smoke = document.createElement("div");
+      smoke.className = "smoke";
 
-    smoke.style.left = `${x}px`;
-    smoke.style.top = `${y}px`;
+      smoke.style.left = `${x}px`;
+      smoke.style.top = `${y}px`;
 
-    content.appendChild(smoke);
+      content.appendChild(smoke);
 
-    smoke.addEventListener("animationend", function () {
-      smoke.remove();
+      smoke.addEventListener("animationend", function () {
+        smoke.remove();
+      });
     });
   });
-});
+}
+
 function getMostRecentPost() {
   fetch("blog.html")
     .then((response) => response.text())

@@ -33,6 +33,7 @@
     cursor: url('./assets/images/cursor.png'), none;
   }
 
+
   :root[data-page="about"] {
     overflow: hidden;
   }
@@ -48,11 +49,6 @@
 
   #content {
     padding: 2%;
-  }
-
-  a {
-    position: relative;
-    z-index: 10000;
   }
 
   .smoke {
@@ -113,6 +109,7 @@
     transition: 0.3s;
     cursor: url('./assets/images/cursor.png'), none;
     z-index: 10000;
+    position: relative;
   }
 
 
@@ -130,6 +127,11 @@
 
   a:hover {
     opacity: 0.3;
+  }
+
+  :root[data-page="blog-post"],
+  :root[data-page="blog-post"] a {
+    cursor: default;
   }
 
   p {
